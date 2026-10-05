@@ -3,18 +3,14 @@ public class Colaborador {
 	private String matricula;
 	private String nome;
 	private final float salarioBase = 2000;
-	public Colaborador(String matricula, String nome) {
-		this.matricula = matricula;
-		this.nome = nome;
-	}
 	public String getMatricula() {
-		return this.nome;
+		return this.matricula;
 	}
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
 	public String getNome() {
-		return this.matricula;
+		return this.nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;

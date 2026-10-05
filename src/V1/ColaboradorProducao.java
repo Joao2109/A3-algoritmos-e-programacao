@@ -2,11 +2,6 @@ package V1;
 public class ColaboradorProducao extends Colaborador {
 	private int quantidadePecas;
 	private float valorPorPeca;
-	public ColaboradorProducao(String matricula, String nome, int quantidadePecas, float valorPorPeca) {
-		super(matricula, nome);
-		this.quantidadePecas = quantidadePecas;
-		this.valorPorPeca = valorPorPeca;
-	}
 	public int getQuantidadePecas() {
 		return this.quantidadePecas;
 	}
