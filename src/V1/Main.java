@@ -53,72 +53,72 @@ public class Main {
 
             cadastrarColaboradorPadraoBtn.addActionListener(e -> {
 
-                    JFrame addColaboradorPadraoFrame = new JFrame("Cadastrar colaborador padrão");
-                    addColaboradorPadraoFrame.setSize(640, 450);
-                    addColaboradorPadraoFrame.setLocationRelativeTo(null);
-                    addColaboradorPadraoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    JFrame cadastrarColaboradorPadraoFrame = new JFrame("Cadastrar colaborador padrão");
+                    cadastrarColaboradorPadraoFrame.setSize(640, 450);
+                    cadastrarColaboradorPadraoFrame.setLocationRelativeTo(null);
+                    cadastrarColaboradorPadraoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-                    JPanel addColaboradorPadraoPanel = new JPanel();
-                    addColaboradorPadraoPanel.setLayout(new GridLayout(6, 1, 10, 10));
-                    addColaboradorPadraoPanel.setBorder(
+                    JPanel cadastrarColaboradorPadraoPanel = new JPanel();
+                    cadastrarColaboradorPadraoPanel.setLayout(new GridLayout(6, 1, 10, 10));
+                    cadastrarColaboradorPadraoPanel.setBorder(
                         BorderFactory.createEmptyBorder(20, 20, 20, 20)
                     );
 
-                    JLabel addColaboradorPadraoLabel =
+                    JLabel cadastrarColaboradorPadraoLabel =
                         new JLabel("Cadastrar colaborador padrão");
-                    addColaboradorPadraoLabel.setHorizontalAlignment(SwingConstants.CENTER);
-                    addColaboradorPadraoLabel.setFont(
+                    cadastrarColaboradorPadraoLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                    cadastrarColaboradorPadraoLabel.setFont(
                         new Font("Arial", Font.BOLD, 20)
                     );
 
-                    JLabel addColaboradorPadraoMatriculaLabel =
+                    JLabel cadastrarColaboradorPadraoMatriculaLabel =
                         new JLabel("Matrícula do colaborador");
-                    addColaboradorPadraoMatriculaLabel.setHorizontalAlignment(
+                    cadastrarColaboradorPadraoMatriculaLabel.setHorizontalAlignment(
                         SwingConstants.CENTER
                     );
 
-                    JLabel addColaboradorPadraoNomeLabel =
+                    JLabel cadastrarColaboradorPadraoNomeLabel =
                         new JLabel("Nome do colaborador");
-                    addColaboradorPadraoNomeLabel.setHorizontalAlignment(
+                    cadastrarColaboradorPadraoNomeLabel.setHorizontalAlignment(
                         SwingConstants.CENTER
                     );
 
-                    JTextField addColaboradorPadraoMatriculaTextField =
+                    JTextField cadastrarColaboradorPadraoMatriculaTextField =
                         new JTextField();
 
-                    JTextField addColaboradorPadraoNomeTextField =
+                    JTextField cadastrarColaboradorPadraoNomeTextField =
                         new JTextField();
 
                     JButton addColaboradorPadraoBtn =
                         new JButton("Cadastrar colaborador");
 
-                    addColaboradorPadraoPanel.add(addColaboradorPadraoLabel);
-                    addColaboradorPadraoPanel.add(addColaboradorPadraoMatriculaLabel);
-                    addColaboradorPadraoPanel.add(addColaboradorPadraoMatriculaTextField);
-                    addColaboradorPadraoPanel.add(addColaboradorPadraoNomeLabel);
-                    addColaboradorPadraoPanel.add(addColaboradorPadraoNomeTextField);
-                    addColaboradorPadraoPanel.add(addColaboradorPadraoBtn);
+                    cadastrarColaboradorPadraoPanel.add(cadastrarColaboradorPadraoLabel);
+                    cadastrarColaboradorPadraoPanel.add(cadastrarColaboradorPadraoMatriculaLabel);
+                    cadastrarColaboradorPadraoPanel.add(cadastrarColaboradorPadraoMatriculaTextField);
+                    cadastrarColaboradorPadraoPanel.add(cadastrarColaboradorPadraoNomeLabel);
+                    cadastrarColaboradorPadraoPanel.add(cadastrarColaboradorPadraoNomeTextField);
+                    cadastrarColaboradorPadraoPanel.add(addColaboradorPadraoBtn);
 
-                    addColaboradorPadraoFrame.add(addColaboradorPadraoPanel);
+                    cadastrarColaboradorPadraoFrame.add(cadastrarColaboradorPadraoPanel);
 
                     addColaboradorPadraoBtn.addActionListener(ev -> {
                         try {
                             String matricula =
-                                addColaboradorPadraoMatriculaTextField.getText().trim();
+                            		cadastrarColaboradorPadraoMatriculaTextField.getText().trim();
                             String nome =
-                                addColaboradorPadraoNomeTextField.getText().trim();
+                            		cadastrarColaboradorPadraoNomeTextField.getText().trim();
 
                             if (matricula.isEmpty() || nome.isEmpty()) {
                                 JOptionPane.showMessageDialog(
-                                    addColaboradorPadraoFrame,
-                                    "Preencha a matrícula e o nome do colaborador.",
+                                		cadastrarColaboradorPadraoFrame,
+                                    "Preencha todos os campos.",
                                     "Atenção",
                                     JOptionPane.WARNING_MESSAGE
                                 );
                                 return;
                             }
 
-                            Colaborador colaborador = new ColaboradorPadrao();
+                            ColaboradorPadrao colaborador = new ColaboradorPadrao();
 
                             colaborador.setMatricula(matricula);
                             colaborador.setNome(nome);
@@ -126,19 +126,19 @@ public class Main {
                             colaboradores.add(colaborador);
 
                             JOptionPane.showMessageDialog(
-                                addColaboradorPadraoFrame,
+                            		cadastrarColaboradorPadraoFrame,
                                 "Colaborador cadastrado com sucesso!",
                                 "Sucesso",
                                 JOptionPane.INFORMATION_MESSAGE
                             );
 
-                            addColaboradorPadraoFrame.dispose();
+                            cadastrarColaboradorPadraoFrame.dispose();
 
                         } catch (Exception ex) {
                             ex.printStackTrace();
 
                             JOptionPane.showMessageDialog(
-                                addColaboradorPadraoFrame,
+                            		cadastrarColaboradorPadraoFrame,
                                 "Erro ao cadastrar o colaborador.",
                                 "Erro",
                                 JOptionPane.ERROR_MESSAGE
@@ -146,14 +146,133 @@ public class Main {
                         }
                     });
 
-                    addColaboradorPadraoFrame.setVisible(true);
+                    cadastrarColaboradorPadraoFrame.setVisible(true);
             });
 
             cadastrarColaboradorComissionadoBtn.addActionListener(e -> {
-                JOptionPane.showMessageDialog(
-                		mainFrame,
-                        "Cadastro de colaborador comissionado"
+
+                JFrame cadastrarColaboradorComissionadoFrame = new JFrame("Cadastrar colaborador padrão");
+                cadastrarColaboradorComissionadoFrame.setSize(640, 450);
+                cadastrarColaboradorComissionadoFrame.setLocationRelativeTo(null);
+                cadastrarColaboradorComissionadoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+                JPanel cadastrarColaboradorComissionadoPanel = new JPanel();
+                cadastrarColaboradorComissionadoPanel.setLayout(new GridLayout(10, 1, 10, 10));
+                cadastrarColaboradorComissionadoPanel.setBorder(
+                    BorderFactory.createEmptyBorder(20, 20, 20, 20)
                 );
+
+                JLabel cadastrarColaboradorComissionadoLabel =
+                    new JLabel("Cadastrar colaborador comissionado");
+                cadastrarColaboradorComissionadoLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                cadastrarColaboradorComissionadoLabel.setFont(
+                    new Font("Arial", Font.BOLD, 20)
+                );
+
+                JLabel cadastrarColaboradorComissionadoMatriculaLabel =
+                    new JLabel("Matrícula do colaborador");
+                cadastrarColaboradorComissionadoMatriculaLabel.setHorizontalAlignment(
+                    SwingConstants.CENTER
+                );
+
+                JLabel cadastrarColaboradorComissionadoNomeLabel =
+                    new JLabel("Nome do colaborador");
+                cadastrarColaboradorComissionadoNomeLabel.setHorizontalAlignment(
+                    SwingConstants.CENTER
+                );
+
+                JLabel cadastrarColaboradorComissionadoValorVendasLabel =
+                    new JLabel("Valor das vendas do colaborador");
+                cadastrarColaboradorComissionadoValorVendasLabel.setHorizontalAlignment(
+                    SwingConstants.CENTER
+                );
+
+                JLabel cadastrarColaboradorComissionadoPercentualComissaoLabel =
+                    new JLabel("Percentual de comissão do colaborador");
+                cadastrarColaboradorComissionadoPercentualComissaoLabel.setHorizontalAlignment(
+                    SwingConstants.CENTER
+                );
+
+                JTextField cadastrarColaboradorComissionadoMatriculaTextField =
+                    new JTextField();
+
+                JTextField cadastrarColaboradorComissionadoNomeTextField =
+                    new JTextField();
+
+                JTextField cadastrarColaboradorComissionadoValorVendasTextField =
+                    new JTextField();
+
+                JTextField cadastrarColaboradorComissionadoPercentualComissaoTextField =
+                    new JTextField();
+
+                JButton addColaboradorComissionadoBtn =
+                    new JButton("Cadastrar colaborador");
+
+                cadastrarColaboradorComissionadoPanel.add(cadastrarColaboradorComissionadoLabel);
+                cadastrarColaboradorComissionadoPanel.add(cadastrarColaboradorComissionadoMatriculaLabel);
+                cadastrarColaboradorComissionadoPanel.add(cadastrarColaboradorComissionadoMatriculaTextField);
+                cadastrarColaboradorComissionadoPanel.add(cadastrarColaboradorComissionadoNomeLabel);
+                cadastrarColaboradorComissionadoPanel.add(cadastrarColaboradorComissionadoNomeTextField);
+                cadastrarColaboradorComissionadoPanel.add(cadastrarColaboradorComissionadoValorVendasLabel);
+                cadastrarColaboradorComissionadoPanel.add(cadastrarColaboradorComissionadoValorVendasTextField);
+                cadastrarColaboradorComissionadoPanel.add(cadastrarColaboradorComissionadoPercentualComissaoLabel);
+                cadastrarColaboradorComissionadoPanel.add(cadastrarColaboradorComissionadoPercentualComissaoTextField);
+                cadastrarColaboradorComissionadoPanel.add(addColaboradorComissionadoBtn);
+
+                cadastrarColaboradorComissionadoFrame.add(cadastrarColaboradorComissionadoPanel);
+
+                addColaboradorComissionadoBtn.addActionListener(ev -> {
+                    try {
+                        String matricula =
+                        		cadastrarColaboradorComissionadoMatriculaTextField.getText().trim();
+                        String nome =
+                        		cadastrarColaboradorComissionadoNomeTextField.getText().trim();
+                        String valorVendas =
+                        		cadastrarColaboradorComissionadoValorVendasTextField.getText().trim();
+                        String percentualComissao =
+                        		cadastrarColaboradorComissionadoPercentualComissaoTextField.getText().trim();
+
+                        if (matricula.isEmpty() || nome.isEmpty() || valorVendas.isEmpty() || percentualComissao.isEmpty()) {
+                            JOptionPane.showMessageDialog(
+                            		cadastrarColaboradorComissionadoFrame,
+                                "Preencha todos os campos.",
+                                "Atenção",
+                                JOptionPane.WARNING_MESSAGE
+                            );
+                            return;
+                        }
+
+                        ColaboradorComissionado colaborador = new ColaboradorComissionado();
+
+                        colaborador.setMatricula(matricula);
+                        colaborador.setNome(nome);
+                        colaborador.setValorVendas(Integer.parseInt(valorVendas));
+                        colaborador.setPercentualComissao(Integer.parseInt(percentualComissao));
+
+                        colaboradores.add(colaborador);
+
+                        JOptionPane.showMessageDialog(
+                        		cadastrarColaboradorComissionadoFrame,
+                            "Colaborador cadastrado com sucesso!",
+                            "Sucesso",
+                            JOptionPane.INFORMATION_MESSAGE
+                        );
+
+                        cadastrarColaboradorComissionadoFrame.dispose();
+
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+
+                        JOptionPane.showMessageDialog(
+                        		cadastrarColaboradorComissionadoFrame,
+                            "Erro ao cadastrar o colaborador.",
+                            "Erro",
+                            JOptionPane.ERROR_MESSAGE
+                        );
+                    }
+                });
+
+                cadastrarColaboradorComissionadoFrame.setVisible(true);
             });
 
             cadastrarColaboradorProducaoBtn.addActionListener(e -> {
@@ -164,6 +283,25 @@ public class Main {
             });
 
             gerarFolhaPagamentoBtn.addActionListener(e -> {
+            	if (colaboradores.isEmpty()) {
+            		System.out.println("Nenhum colaborador cadastrado");
+            		return;
+            	}
+            	colaboradores.forEach(colaborador -> {
+            		String tipo = colaborador.getClass().getTypeName();
+            		System.out.println("Colaborador:\nMatrícula: " + colaborador.getMatricula() + "\tNome: " + colaborador.getNome() + "\tSalário base: " + colaborador.getSalarioBase());
+            		switch (tipo) {
+        			case "V1.ColaboradorComissionado":
+        				System.out.println("Tipo: Comissionado\tComissão: " + ((ColaboradorComissionado) colaborador).calcularComissao() + "\tSalário final: " + ((ColaboradorComissionado) colaborador).calcularSalarioFinal() + "\n");
+        				break;
+        			case "V1.ColaboradorProducao":
+        				System.out.println("Tipo: Comissionado\tComissão: " + ((ColaboradorProducao) colaborador).calcularProdutividade() + "\tSalário final: " + ((ColaboradorProducao) colaborador).calcularSalarioFinal() + "\n");
+        				break;
+            			default:
+            				System.out.println("Tipo: Padrão\n");
+            				break;
+            		}
+            	});
                 JOptionPane.showMessageDialog(
                 		mainFrame,
                         "Gerando folha de pagamento..."
