@@ -12,11 +12,11 @@ public class Main {
 
             JFrame mainFrame = new JFrame("Sistema de Folha de Pagamento");
             mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            mainFrame.setSize(640, 450);
+            mainFrame.setSize(640, 350);
             mainFrame.setLocationRelativeTo(null);
 
             JPanel mainPanel = new JPanel();
-            mainPanel.setLayout(new GridLayout(7, 1, 10, 10));
+            mainPanel.setLayout(new GridLayout(7, 1, 5, 5));
             mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
             JLabel mainLabel = new JLabel("Sistema de Folha de Pagamento");
@@ -54,12 +54,12 @@ public class Main {
             cadastrarColaboradorPadraoBtn.addActionListener(e -> {
 
                     JFrame cadastrarColaboradorPadraoFrame = new JFrame("Cadastrar colaborador padrão");
-                    cadastrarColaboradorPadraoFrame.setSize(640, 450);
+                    cadastrarColaboradorPadraoFrame.setSize(640, 315);
                     cadastrarColaboradorPadraoFrame.setLocationRelativeTo(null);
                     cadastrarColaboradorPadraoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
                     JPanel cadastrarColaboradorPadraoPanel = new JPanel();
-                    cadastrarColaboradorPadraoPanel.setLayout(new GridLayout(6, 1, 10, 10));
+                    cadastrarColaboradorPadraoPanel.setLayout(new GridLayout(6, 1, 5, 5));
                     cadastrarColaboradorPadraoPanel.setBorder(
                         BorderFactory.createEmptyBorder(20, 20, 20, 20)
                     );
@@ -152,12 +152,12 @@ public class Main {
             cadastrarColaboradorComissionadoBtn.addActionListener(e -> {
 
                 JFrame cadastrarColaboradorComissionadoFrame = new JFrame("Cadastrar colaborador padrão");
-                cadastrarColaboradorComissionadoFrame.setSize(640, 450);
+                cadastrarColaboradorComissionadoFrame.setSize(640, 455);
                 cadastrarColaboradorComissionadoFrame.setLocationRelativeTo(null);
                 cadastrarColaboradorComissionadoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
                 JPanel cadastrarColaboradorComissionadoPanel = new JPanel();
-                cadastrarColaboradorComissionadoPanel.setLayout(new GridLayout(10, 1, 10, 10));
+                cadastrarColaboradorComissionadoPanel.setLayout(new GridLayout(10, 1, 5, 5));
                 cadastrarColaboradorComissionadoPanel.setBorder(
                     BorderFactory.createEmptyBorder(20, 20, 20, 20)
                 );
@@ -276,10 +276,129 @@ public class Main {
             });
 
             cadastrarColaboradorProducaoBtn.addActionListener(e -> {
-                JOptionPane.showMessageDialog(
-                		mainFrame,
-                        "Cadastro de colaborador de produção"
+
+                JFrame cadastrarColaboradorProducaoFrame = new JFrame("Sistema de Folha de Pagamento");
+                cadastrarColaboradorProducaoFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                cadastrarColaboradorProducaoFrame.setSize(640, 455);
+                cadastrarColaboradorProducaoFrame.setLocationRelativeTo(null);
+
+                JPanel cadastrarColaboradorProducaoPanel = new JPanel();
+                cadastrarColaboradorProducaoPanel.setLayout(new GridLayout(10, 1, 5, 5));
+                cadastrarColaboradorProducaoPanel.setBorder(
+                    BorderFactory.createEmptyBorder(20, 20, 20, 20)
                 );
+
+                JLabel cadastrarColaboradorProducaoLabel =
+                    new JLabel("Cadastrar colaborador comissionado");
+                cadastrarColaboradorProducaoLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                cadastrarColaboradorProducaoLabel.setFont(
+                    new Font("Arial", Font.BOLD, 20)
+                );
+
+                JLabel cadastrarColaboradorProducaoMatriculaLabel =
+                    new JLabel("Matrícula do colaborador");
+                cadastrarColaboradorProducaoMatriculaLabel.setHorizontalAlignment(
+                    SwingConstants.CENTER
+                );
+
+                JLabel cadastrarColaboradorProducaoNomeLabel =
+                    new JLabel("Nome do colaborador");
+                cadastrarColaboradorProducaoNomeLabel.setHorizontalAlignment(
+                    SwingConstants.CENTER
+                );
+
+                JLabel cadastrarColaboradorProducaoQuantidadePecasLabel =
+                    new JLabel("Quantidade de peças produzidas pelo colaborador");
+                cadastrarColaboradorProducaoQuantidadePecasLabel.setHorizontalAlignment(
+                    SwingConstants.CENTER
+                );
+
+                JLabel cadastrarColaboradorProducaoValorPorPecaLabel =
+                    new JLabel("Valor por peça produzida");
+                cadastrarColaboradorProducaoValorPorPecaLabel.setHorizontalAlignment(
+                    SwingConstants.CENTER
+                );
+
+                JTextField cadastrarColaboradorProducaoMatriculaTextField =
+                    new JTextField();
+
+                JTextField cadastrarColaboradorProducaoNomeTextField =
+                    new JTextField();
+
+                JTextField cadastrarColaboradorProducaoQuantidadePecasTextField =
+                    new JTextField();
+
+                JTextField cadastrarColaboradorProducaoValorPorPecaTextField =
+                    new JTextField();
+
+                JButton addColaboradorProducaoBtn =
+                    new JButton("Cadastrar colaborador");
+
+                cadastrarColaboradorProducaoPanel.add(cadastrarColaboradorProducaoLabel);
+                cadastrarColaboradorProducaoPanel.add(cadastrarColaboradorProducaoMatriculaLabel);
+                cadastrarColaboradorProducaoPanel.add(cadastrarColaboradorProducaoMatriculaTextField);
+                cadastrarColaboradorProducaoPanel.add(cadastrarColaboradorProducaoNomeLabel);
+                cadastrarColaboradorProducaoPanel.add(cadastrarColaboradorProducaoNomeTextField);
+                cadastrarColaboradorProducaoPanel.add(cadastrarColaboradorProducaoQuantidadePecasLabel);
+                cadastrarColaboradorProducaoPanel.add(cadastrarColaboradorProducaoQuantidadePecasTextField);
+                cadastrarColaboradorProducaoPanel.add(cadastrarColaboradorProducaoValorPorPecaLabel);
+                cadastrarColaboradorProducaoPanel.add(cadastrarColaboradorProducaoValorPorPecaTextField);
+                cadastrarColaboradorProducaoPanel.add(addColaboradorProducaoBtn);
+
+                cadastrarColaboradorProducaoFrame.add(cadastrarColaboradorProducaoPanel);
+
+                addColaboradorProducaoBtn.addActionListener(ev -> {
+                    try {
+                        String matricula =
+                        		cadastrarColaboradorProducaoMatriculaTextField.getText().trim();
+                        String nome =
+                        		cadastrarColaboradorProducaoNomeTextField.getText().trim();
+                        String quantidadePecas =
+                        		cadastrarColaboradorProducaoQuantidadePecasTextField.getText().trim();
+                        String valorPorPeca =
+                        		cadastrarColaboradorProducaoValorPorPecaTextField.getText().trim();
+
+                        if (matricula.isEmpty() || nome.isEmpty() || quantidadePecas.isEmpty() || quantidadePecas.isEmpty()) {
+                            JOptionPane.showMessageDialog(
+                            		cadastrarColaboradorProducaoFrame,
+                                "Preencha todos os campos.",
+                                "Atenção",
+                                JOptionPane.WARNING_MESSAGE
+                            );
+                            return;
+                        }
+
+                        ColaboradorProducao colaborador = new ColaboradorProducao();
+
+                        colaborador.setMatricula(matricula);
+                        colaborador.setNome(nome);
+                        colaborador.setQuantidadePecas(Integer.parseInt(quantidadePecas));
+                        colaborador.setValorPorPeca(Float.parseFloat(valorPorPeca.replace(",", ".")));
+
+                        colaboradores.add(colaborador);
+
+                        JOptionPane.showMessageDialog(
+                        		cadastrarColaboradorProducaoFrame,
+                            "Colaborador cadastrado com sucesso!",
+                            "Sucesso",
+                            JOptionPane.INFORMATION_MESSAGE
+                        );
+
+                        cadastrarColaboradorProducaoFrame.dispose();
+
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+
+                        JOptionPane.showMessageDialog(
+                        		cadastrarColaboradorProducaoFrame,
+                            "Erro ao cadastrar o colaborador.",
+                            "Erro",
+                            JOptionPane.ERROR_MESSAGE
+                        );
+                    }
+                });
+
+                cadastrarColaboradorProducaoFrame.setVisible(true);
             });
 
             gerarFolhaPagamentoBtn.addActionListener(e -> {
@@ -295,11 +414,11 @@ public class Main {
         				System.out.println("Tipo: Comissionado\tComissão: " + ((ColaboradorComissionado) colaborador).calcularComissao() + "\tSalário final: " + ((ColaboradorComissionado) colaborador).calcularSalarioFinal() + "\n");
         				break;
         			case "V1.ColaboradorProducao":
-        				System.out.println("Tipo: Comissionado\tComissão: " + ((ColaboradorProducao) colaborador).calcularProdutividade() + "\tSalário final: " + ((ColaboradorProducao) colaborador).calcularSalarioFinal() + "\n");
+        				System.out.println("Tipo: Produção\tProdutvidade: " + ((ColaboradorProducao) colaborador).calcularProdutividade() + "\tSalário final: " + ((ColaboradorProducao) colaborador).calcularSalarioFinal() + "\n");
         				break;
-            			default:
-            				System.out.println("Tipo: Padrão\n");
-            				break;
+            		default:
+            			System.out.println("Tipo: Padrão\n");
+            			break;
             		}
             	});
                 JOptionPane.showMessageDialog(
@@ -309,10 +428,95 @@ public class Main {
             });
 
             exibirResumoBtn.addActionListener(e -> {
-                JOptionPane.showMessageDialog(
-                		mainFrame,
-                        "Exibindo resumo..."
+                int quantidadeColaboradores = colaboradores.size();
+
+                if (quantidadeColaboradores <= 0) {
+                    JOptionPane.showMessageDialog(
+                        mainFrame,
+                        "Nenhum colaborador cadastrado."
+                    );
+                    return;
+                }
+
+                float somaSalarios = 0;
+
+                for (Colaborador colaborador : colaboradores) {
+                    somaSalarios += colaborador.calcularSalarioFinal();
+                }
+
+                float mediaSalarios = somaSalarios / quantidadeColaboradores;
+
+                JFrame exibirResumoFrame =
+                    new JFrame("Sistema de Folha de Pagamento");
+
+                exibirResumoFrame.setDefaultCloseOperation(
+                    JFrame.DISPOSE_ON_CLOSE
                 );
+                exibirResumoFrame.setSize(640, 215);
+                exibirResumoFrame.setLocationRelativeTo(mainFrame);
+
+                JPanel exibirResumoPanel = new JPanel(
+                    new BorderLayout(10, 15)
+                );
+
+                exibirResumoPanel.setBorder(
+                    BorderFactory.createEmptyBorder(20, 20, 20, 20)
+                );
+
+                JLabel exibirResumoLabel = new JLabel(
+                    "Resumo da folha",
+                    SwingConstants.CENTER
+                );
+
+                exibirResumoLabel.setFont(
+                    new Font("Arial", Font.BOLD, 20)
+                );
+
+                JPanel exibirResumoContentPanel = new JPanel(
+                    new GridLayout(3, 1, 5, 5)
+                );
+
+                JLabel exibirResumoQuantidadeLabel = new JLabel(
+                    "Quantidade de colaboradores: "
+                    + quantidadeColaboradores,
+                    SwingConstants.CENTER
+                );
+
+                JLabel exibirResumoSomaLabel = new JLabel(
+                    String.format(
+                        java.util.Locale.forLanguageTag("pt-BR"),
+                        "Soma dos salários: R$ %.2f",
+                        somaSalarios
+                    ),
+                    SwingConstants.CENTER
+                );
+
+                JLabel exibirResumoMediaLabel = new JLabel(
+                    String.format(
+                        java.util.Locale.forLanguageTag("pt-BR"),
+                        "Média dos salários: R$ %.2f",
+                        mediaSalarios
+                    ),
+                    SwingConstants.CENTER
+                );
+
+                exibirResumoContentPanel.add(exibirResumoQuantidadeLabel);
+                exibirResumoContentPanel.add(exibirResumoSomaLabel);
+                exibirResumoContentPanel.add(exibirResumoMediaLabel);
+
+                exibirResumoPanel.add(
+                    exibirResumoLabel,
+                    BorderLayout.NORTH
+                );
+
+                exibirResumoPanel.add(
+                    exibirResumoContentPanel,
+                    BorderLayout.CENTER
+                );
+
+                exibirResumoFrame.add(exibirResumoPanel);
+
+                exibirResumoFrame.setVisible(true);
             });
         });
     }
