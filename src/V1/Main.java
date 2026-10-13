@@ -278,9 +278,9 @@ public class Main {
             cadastrarColaboradorProducaoBtn.addActionListener(e -> {
 
                 JFrame cadastrarColaboradorProducaoFrame = new JFrame("Sistema de Folha de Pagamento");
-                cadastrarColaboradorProducaoFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 cadastrarColaboradorProducaoFrame.setSize(640, 455);
                 cadastrarColaboradorProducaoFrame.setLocationRelativeTo(null);
+                cadastrarColaboradorProducaoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
                 JPanel cadastrarColaboradorProducaoPanel = new JPanel();
                 cadastrarColaboradorProducaoPanel.setLayout(new GridLayout(10, 1, 5, 5));
@@ -403,28 +403,97 @@ public class Main {
 
             gerarFolhaPagamentoBtn.addActionListener(e -> {
             	if (colaboradores.isEmpty()) {
-            		System.out.println("Nenhum colaborador cadastrado");
-            		return;
+                    JOptionPane.showMessageDialog(
+                    		mainFrame,
+                            "Nenhum colaborador cadastrado."
+                    );
             	}
+            	
+            	JFrame
+            	gerarFolhaPagamentoFrame = new JFrame("Folha de pagamento");
+            	gerarFolhaPagamentoFrame.setSize(640, 350);
+            	gerarFolhaPagamentoFrame.setLocationRelativeTo(null);
+            	gerarFolhaPagamentoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            	gerarFolhaPagamentoFrame.setLayout(new BorderLayout());
+
+            	JPanel gerarFolhaPagamentoHeaderPanel = new JPanel();
+
+            	JLabel gerarFolhaPagamentoHeaderLabel =
+            	    new JLabel("Folha de pagamento");
+            	gerarFolhaPagamentoHeaderPanel.add(gerarFolhaPagamentoHeaderLabel);
+
+            	JPanel gerarFolhaPagamentoMainPanel = new JPanel();
+            	gerarFolhaPagamentoMainPanel.setLayout(
+            	    new BoxLayout(gerarFolhaPagamentoMainPanel, BoxLayout.Y_AXIS)
+            	);
+
+            	JScrollPane gerarFolhaPagamentoMainScrollPane =
+            	    new JScrollPane(gerarFolhaPagamentoMainPanel);
+            	gerarFolhaPagamentoMainScrollPane.setVerticalScrollBarPolicy(
+            	    JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED
+            	);
+            	gerarFolhaPagamentoMainScrollPane.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+                
             	colaboradores.forEach(colaborador -> {
             		String tipo = colaborador.getClass().getTypeName();
+            		
+            		JPanel colaboradorPanel = new JPanel();
+            		colaboradorPanel.add(new JLabel("Colaborador:"));
+            		colaboradorPanel.setLayout(
+                    	    new BoxLayout(colaboradorPanel, BoxLayout.Y_AXIS)
+                    	);
+            		colaboradorPanel.setBorder(
+                            BorderFactory.createEmptyBorder(20, 20, 20, 20)
+                        );
+            		
+            		JPanel colaboradorInnerPanel1 = new JPanel();
+            		colaboradorInnerPanel1.setLayout(new BoxLayout(colaboradorInnerPanel1, BoxLayout.X_AXIS));
+            		JPanel colaboradorInnerPanel2 = new JPanel();
+            		colaboradorInnerPanel2.setLayout(new BoxLayout(colaboradorInnerPanel2, BoxLayout.X_AXIS));
+
+            		colaboradorInnerPanel1.add(new JLabel("Matrícula: " + colaborador.getMatricula()));
+            		colaboradorInnerPanel1.add(Box.createHorizontalGlue());
+            		colaboradorInnerPanel1.add(new JLabel("Nome: " + colaborador.getNome()));
+            		colaboradorInnerPanel1.add(Box.createHorizontalGlue());
+            		colaboradorInnerPanel1.add(new JLabel("Salário base: " + colaborador.getSalarioBase()));
+            		
             		System.out.println("Colaborador:\nMatrícula: " + colaborador.getMatricula() + "\tNome: " + colaborador.getNome() + "\tSalário base: " + colaborador.getSalarioBase());
             		switch (tipo) {
         			case "V1.ColaboradorComissionado":
+        				colaboradorInnerPanel2.add(new JLabel("Tipo: Comissionado"));
+                		colaboradorInnerPanel2.add(Box.createHorizontalGlue());
+        				colaboradorInnerPanel2.add(new JLabel("Comissão: " + ((ColaboradorComissionado) colaborador).calcularComissao()));
+                		colaboradorInnerPanel2.add(Box.createHorizontalGlue());
+        				colaboradorInnerPanel2.add(new JLabel("Tipo: " + ((ColaboradorComissionado) colaborador).calcularSalarioFinal()));
         				System.out.println("Tipo: Comissionado\tComissão: " + ((ColaboradorComissionado) colaborador).calcularComissao() + "\tSalário final: " + ((ColaboradorComissionado) colaborador).calcularSalarioFinal() + "\n");
         				break;
         			case "V1.ColaboradorProducao":
+        				colaboradorInnerPanel2.add(new JLabel("Tipo: Produção"));
+                		colaboradorInnerPanel2.add(Box.createHorizontalGlue());
+        				colaboradorInnerPanel2.add(new JLabel("Produtividade: " + ((ColaboradorProducao) colaborador).calcularProdutividade()));
+                		colaboradorInnerPanel2.add(Box.createHorizontalGlue());
+        				colaboradorInnerPanel2.add(new JLabel("Tipo: " + ((ColaboradorProducao) colaborador).calcularSalarioFinal()));
         				System.out.println("Tipo: Produção\tProdutvidade: " + ((ColaboradorProducao) colaborador).calcularProdutividade() + "\tSalário final: " + ((ColaboradorProducao) colaborador).calcularSalarioFinal() + "\n");
         				break;
             		default:
-            			System.out.println("Tipo: Padrão\n");
+            			colaboradorInnerPanel2.add(new JLabel("Tipo: Padrão"));
             			break;
             		}
+            		
+            		colaboradorPanel.add(colaboradorInnerPanel1);
+            		colaboradorPanel.add(colaboradorInnerPanel2);
+            		gerarFolhaPagamentoMainPanel.add(colaboradorPanel);
             	});
-                JOptionPane.showMessageDialog(
-                		mainFrame,
-                        "Gerando folha de pagamento..."
-                );
+
+            	gerarFolhaPagamentoFrame.add(
+            	    gerarFolhaPagamentoHeaderPanel,
+            	    BorderLayout.NORTH
+            	);
+            	gerarFolhaPagamentoFrame.add(
+            	    gerarFolhaPagamentoMainScrollPane,
+            	    BorderLayout.CENTER
+            	);
+            	gerarFolhaPagamentoFrame.setVisible(true);
             });
 
             exibirResumoBtn.addActionListener(e -> {
@@ -448,12 +517,9 @@ public class Main {
 
                 JFrame exibirResumoFrame =
                     new JFrame("Sistema de Folha de Pagamento");
-
-                exibirResumoFrame.setDefaultCloseOperation(
-                    JFrame.DISPOSE_ON_CLOSE
-                );
                 exibirResumoFrame.setSize(640, 215);
                 exibirResumoFrame.setLocationRelativeTo(mainFrame);
+                exibirResumoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
                 JPanel exibirResumoPanel = new JPanel(
                     new BorderLayout(10, 15)
