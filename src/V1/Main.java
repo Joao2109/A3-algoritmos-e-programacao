@@ -3,7 +3,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 public class Main {
-
+	private static JPanel renderPanel (Component[] components, int vSize, int hSize) {
+		JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(vSize, hSize, 5, 5));
+        panel.setBorder(
+                BorderFactory.createEmptyBorder(20, 20, 20, 20)
+            );
+		for (int i = 0; i< components.length; i++) {
+			panel.add(components[i]);
+		}
+		return panel;
+	}
     public static void main(String[] args) {
 
         SwingUtilities.invokeLater(() -> {
@@ -58,29 +68,10 @@ public class Main {
                     cadastrarColaboradorPadraoFrame.setLocationRelativeTo(null);
                     cadastrarColaboradorPadraoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-                    JPanel cadastrarColaboradorPadraoPanel = new JPanel();
-                    cadastrarColaboradorPadraoPanel.setLayout(new GridLayout(6, 1, 5, 5));
-                    cadastrarColaboradorPadraoPanel.setBorder(
-                        BorderFactory.createEmptyBorder(20, 20, 20, 20)
-                    );
-
                     JLabel cadastrarColaboradorPadraoLabel =
-                        new JLabel("Cadastrar colaborador padrão");
-                    cadastrarColaboradorPadraoLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                        new JLabel("Cadastrar colaborador padrão", SwingConstants.CENTER);
                     cadastrarColaboradorPadraoLabel.setFont(
                         new Font("Arial", Font.BOLD, 20)
-                    );
-
-                    JLabel cadastrarColaboradorPadraoMatriculaLabel =
-                        new JLabel("Matrícula do colaborador");
-                    cadastrarColaboradorPadraoMatriculaLabel.setHorizontalAlignment(
-                        SwingConstants.CENTER
-                    );
-
-                    JLabel cadastrarColaboradorPadraoNomeLabel =
-                        new JLabel("Nome do colaborador");
-                    cadastrarColaboradorPadraoNomeLabel.setHorizontalAlignment(
-                        SwingConstants.CENTER
                     );
 
                     JTextField cadastrarColaboradorPadraoMatriculaTextField =
@@ -91,15 +82,17 @@ public class Main {
 
                     JButton addColaboradorPadraoBtn =
                         new JButton("Cadastrar colaborador");
-
-                    cadastrarColaboradorPadraoPanel.add(cadastrarColaboradorPadraoLabel);
-                    cadastrarColaboradorPadraoPanel.add(cadastrarColaboradorPadraoMatriculaLabel);
-                    cadastrarColaboradorPadraoPanel.add(cadastrarColaboradorPadraoMatriculaTextField);
-                    cadastrarColaboradorPadraoPanel.add(cadastrarColaboradorPadraoNomeLabel);
-                    cadastrarColaboradorPadraoPanel.add(cadastrarColaboradorPadraoNomeTextField);
-                    cadastrarColaboradorPadraoPanel.add(addColaboradorPadraoBtn);
-
-                    cadastrarColaboradorPadraoFrame.add(cadastrarColaboradorPadraoPanel);
+                    
+                    Component[] cadastrarColaboradorPadraoComponents = {
+                    	cadastrarColaboradorPadraoLabel,
+                    	new JLabel("Matrícula do colaborador", SwingConstants.CENTER),
+                    	cadastrarColaboradorPadraoMatriculaTextField,
+                    	new JLabel("Nome do colaborador", SwingConstants.CENTER),
+                    	cadastrarColaboradorPadraoNomeTextField,
+                    	addColaboradorPadraoBtn
+                    };
+                    
+                    cadastrarColaboradorPadraoFrame.add(renderPanel(cadastrarColaboradorPadraoComponents, 6, 1));
 
                     addColaboradorPadraoBtn.addActionListener(ev -> {
                         try {
@@ -156,41 +149,10 @@ public class Main {
                 cadastrarColaboradorComissionadoFrame.setLocationRelativeTo(null);
                 cadastrarColaboradorComissionadoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-                JPanel cadastrarColaboradorComissionadoPanel = new JPanel();
-                cadastrarColaboradorComissionadoPanel.setLayout(new GridLayout(10, 1, 5, 5));
-                cadastrarColaboradorComissionadoPanel.setBorder(
-                    BorderFactory.createEmptyBorder(20, 20, 20, 20)
-                );
-
                 JLabel cadastrarColaboradorComissionadoLabel =
-                    new JLabel("Cadastrar colaborador comissionado");
-                cadastrarColaboradorComissionadoLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                    new JLabel("Cadastrar colaborador comissionado", SwingConstants.CENTER);
                 cadastrarColaboradorComissionadoLabel.setFont(
                     new Font("Arial", Font.BOLD, 20)
-                );
-
-                JLabel cadastrarColaboradorComissionadoMatriculaLabel =
-                    new JLabel("Matrícula do colaborador");
-                cadastrarColaboradorComissionadoMatriculaLabel.setHorizontalAlignment(
-                    SwingConstants.CENTER
-                );
-
-                JLabel cadastrarColaboradorComissionadoNomeLabel =
-                    new JLabel("Nome do colaborador");
-                cadastrarColaboradorComissionadoNomeLabel.setHorizontalAlignment(
-                    SwingConstants.CENTER
-                );
-
-                JLabel cadastrarColaboradorComissionadoValorVendasLabel =
-                    new JLabel("Valor das vendas do colaborador");
-                cadastrarColaboradorComissionadoValorVendasLabel.setHorizontalAlignment(
-                    SwingConstants.CENTER
-                );
-
-                JLabel cadastrarColaboradorComissionadoPercentualComissaoLabel =
-                    new JLabel("Percentual de comissão do colaborador");
-                cadastrarColaboradorComissionadoPercentualComissaoLabel.setHorizontalAlignment(
-                    SwingConstants.CENTER
                 );
 
                 JTextField cadastrarColaboradorComissionadoMatriculaTextField =
@@ -207,19 +169,21 @@ public class Main {
 
                 JButton addColaboradorComissionadoBtn =
                     new JButton("Cadastrar colaborador");
+                
+                Component[] cadastrarColaboradorComissionadoComponents = {
+                		cadastrarColaboradorComissionadoLabel,
+                    	new JLabel("Matrícula do colaborador", SwingConstants.CENTER),
+                    	cadastrarColaboradorComissionadoMatriculaTextField,
+                    	new JLabel("Nome do colaborador", SwingConstants.CENTER),
+                    	cadastrarColaboradorComissionadoNomeTextField,
+                    	new JLabel("Valor das vendas do colaborador", SwingConstants.CENTER),
+                    	cadastrarColaboradorComissionadoValorVendasTextField,
+                    	new JLabel("Percentual de comissão do colaborador", SwingConstants.CENTER),
+                    	cadastrarColaboradorComissionadoPercentualComissaoTextField,
+                    	addColaboradorComissionadoBtn
+                    };
 
-                cadastrarColaboradorComissionadoPanel.add(cadastrarColaboradorComissionadoLabel);
-                cadastrarColaboradorComissionadoPanel.add(cadastrarColaboradorComissionadoMatriculaLabel);
-                cadastrarColaboradorComissionadoPanel.add(cadastrarColaboradorComissionadoMatriculaTextField);
-                cadastrarColaboradorComissionadoPanel.add(cadastrarColaboradorComissionadoNomeLabel);
-                cadastrarColaboradorComissionadoPanel.add(cadastrarColaboradorComissionadoNomeTextField);
-                cadastrarColaboradorComissionadoPanel.add(cadastrarColaboradorComissionadoValorVendasLabel);
-                cadastrarColaboradorComissionadoPanel.add(cadastrarColaboradorComissionadoValorVendasTextField);
-                cadastrarColaboradorComissionadoPanel.add(cadastrarColaboradorComissionadoPercentualComissaoLabel);
-                cadastrarColaboradorComissionadoPanel.add(cadastrarColaboradorComissionadoPercentualComissaoTextField);
-                cadastrarColaboradorComissionadoPanel.add(addColaboradorComissionadoBtn);
-
-                cadastrarColaboradorComissionadoFrame.add(cadastrarColaboradorComissionadoPanel);
+                cadastrarColaboradorComissionadoFrame.add(renderPanel(cadastrarColaboradorComissionadoComponents, 10, 1));
 
                 addColaboradorComissionadoBtn.addActionListener(ev -> {
                     try {
@@ -295,30 +259,6 @@ public class Main {
                     new Font("Arial", Font.BOLD, 20)
                 );
 
-                JLabel cadastrarColaboradorProducaoMatriculaLabel =
-                    new JLabel("Matrícula do colaborador");
-                cadastrarColaboradorProducaoMatriculaLabel.setHorizontalAlignment(
-                    SwingConstants.CENTER
-                );
-
-                JLabel cadastrarColaboradorProducaoNomeLabel =
-                    new JLabel("Nome do colaborador");
-                cadastrarColaboradorProducaoNomeLabel.setHorizontalAlignment(
-                    SwingConstants.CENTER
-                );
-
-                JLabel cadastrarColaboradorProducaoQuantidadePecasLabel =
-                    new JLabel("Quantidade de peças produzidas pelo colaborador");
-                cadastrarColaboradorProducaoQuantidadePecasLabel.setHorizontalAlignment(
-                    SwingConstants.CENTER
-                );
-
-                JLabel cadastrarColaboradorProducaoValorPorPecaLabel =
-                    new JLabel("Valor por peça produzida");
-                cadastrarColaboradorProducaoValorPorPecaLabel.setHorizontalAlignment(
-                    SwingConstants.CENTER
-                );
-
                 JTextField cadastrarColaboradorProducaoMatriculaTextField =
                     new JTextField();
 
@@ -333,19 +273,21 @@ public class Main {
 
                 JButton addColaboradorProducaoBtn =
                     new JButton("Cadastrar colaborador");
+                
+                Component[] cadastrarColaboradorProducaoComponents = {
+                		cadastrarColaboradorProducaoLabel,
+                		new JLabel("Matrícula do colaborador", SwingConstants.CENTER),
+                		cadastrarColaboradorProducaoMatriculaTextField,
+                		new JLabel("Nome do colaborador", SwingConstants.CENTER),
+                		cadastrarColaboradorProducaoNomeTextField,
+                		new JLabel("Quantidade de peças produzidas pelo colaborador", SwingConstants.CENTER),
+                		cadastrarColaboradorProducaoQuantidadePecasTextField,
+                		new JLabel("Valor por peça produzida", SwingConstants.CENTER),
+                		cadastrarColaboradorProducaoValorPorPecaTextField,
+                		addColaboradorProducaoBtn
+                };
 
-                cadastrarColaboradorProducaoPanel.add(cadastrarColaboradorProducaoLabel);
-                cadastrarColaboradorProducaoPanel.add(cadastrarColaboradorProducaoMatriculaLabel);
-                cadastrarColaboradorProducaoPanel.add(cadastrarColaboradorProducaoMatriculaTextField);
-                cadastrarColaboradorProducaoPanel.add(cadastrarColaboradorProducaoNomeLabel);
-                cadastrarColaboradorProducaoPanel.add(cadastrarColaboradorProducaoNomeTextField);
-                cadastrarColaboradorProducaoPanel.add(cadastrarColaboradorProducaoQuantidadePecasLabel);
-                cadastrarColaboradorProducaoPanel.add(cadastrarColaboradorProducaoQuantidadePecasTextField);
-                cadastrarColaboradorProducaoPanel.add(cadastrarColaboradorProducaoValorPorPecaLabel);
-                cadastrarColaboradorProducaoPanel.add(cadastrarColaboradorProducaoValorPorPecaTextField);
-                cadastrarColaboradorProducaoPanel.add(addColaboradorProducaoBtn);
-
-                cadastrarColaboradorProducaoFrame.add(cadastrarColaboradorProducaoPanel);
+                cadastrarColaboradorProducaoFrame.add(renderPanel(cadastrarColaboradorProducaoComponents, 10, 1));
 
                 addColaboradorProducaoBtn.addActionListener(ev -> {
                     try {
@@ -438,7 +380,7 @@ public class Main {
             		String tipo = colaborador.getClass().getTypeName();
             		
             		JPanel colaboradorPanel = new JPanel();
-            		colaboradorPanel.add(new JLabel("Colaborador:"));
+            		colaboradorPanel.add(new JLabel("Colaborador:", SwingConstants.CENTER));
             		colaboradorPanel.setLayout(
                     	    new BoxLayout(colaboradorPanel, BoxLayout.Y_AXIS)
                     	);
@@ -464,7 +406,7 @@ public class Main {
                 		colaboradorInnerPanel2.add(Box.createHorizontalGlue());
         				colaboradorInnerPanel2.add(new JLabel("Comissão: " + ((ColaboradorComissionado) colaborador).calcularComissao()));
                 		colaboradorInnerPanel2.add(Box.createHorizontalGlue());
-        				colaboradorInnerPanel2.add(new JLabel("Tipo: " + ((ColaboradorComissionado) colaborador).calcularSalarioFinal()));
+        				colaboradorInnerPanel2.add(new JLabel("Salário final: " + ((ColaboradorComissionado) colaborador).calcularSalarioFinal()));
         				System.out.println("Tipo: Comissionado\tComissão: " + ((ColaboradorComissionado) colaborador).calcularComissao() + "\tSalário final: " + ((ColaboradorComissionado) colaborador).calcularSalarioFinal() + "\n");
         				break;
         			case "V1.ColaboradorProducao":
@@ -472,7 +414,7 @@ public class Main {
                 		colaboradorInnerPanel2.add(Box.createHorizontalGlue());
         				colaboradorInnerPanel2.add(new JLabel("Produtividade: " + ((ColaboradorProducao) colaborador).calcularProdutividade()));
                 		colaboradorInnerPanel2.add(Box.createHorizontalGlue());
-        				colaboradorInnerPanel2.add(new JLabel("Tipo: " + ((ColaboradorProducao) colaborador).calcularSalarioFinal()));
+        				colaboradorInnerPanel2.add(new JLabel("Salário final: " + ((ColaboradorProducao) colaborador).calcularSalarioFinal()));
         				System.out.println("Tipo: Produção\tProdutvidade: " + ((ColaboradorProducao) colaborador).calcularProdutividade() + "\tSalário final: " + ((ColaboradorProducao) colaborador).calcularSalarioFinal() + "\n");
         				break;
             		default:
