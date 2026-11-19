@@ -25,12 +25,7 @@ public class Main {
             mainFrame.setSize(640, 350);
             mainFrame.setLocationRelativeTo(null);
 
-            JPanel mainPanel = new JPanel();
-            mainPanel.setLayout(new GridLayout(7, 1, 5, 5));
-            mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-
-            JLabel mainLabel = new JLabel("Sistema de Folha de Pagamento");
-            mainLabel.setHorizontalAlignment(SwingConstants.CENTER);
+            JLabel mainLabel = new JLabel("Sistema de Folha de Pagamento", SwingConstants.CENTER);
             mainLabel.setFont(new Font("Arial", Font.BOLD, 20));
 
             JButton cadastrarColaboradorPadraoBtn = new JButton("Cadastrar colaborador padrão");
@@ -45,15 +40,17 @@ public class Main {
 
             JButton sairBtn = new JButton("Sair");
 
-            mainPanel.add(mainLabel);
-            mainPanel.add(cadastrarColaboradorPadraoBtn);
-            mainPanel.add(cadastrarColaboradorComissionadoBtn);
-            mainPanel.add(cadastrarColaboradorProducaoBtn);
-            mainPanel.add(gerarFolhaPagamentoBtn);
-            mainPanel.add(exibirResumoBtn);
-            mainPanel.add(sairBtn);
+            Component[] mainComponents = {
+            	mainLabel,
+            	cadastrarColaboradorPadraoBtn,
+            	cadastrarColaboradorComissionadoBtn,
+            	cadastrarColaboradorProducaoBtn,
+            	gerarFolhaPagamentoBtn,
+            	exibirResumoBtn,
+            	sairBtn
+            };
 
-            mainFrame.add(mainPanel);
+            mainFrame.add(renderPanel(mainComponents, 7, 1));
             mainFrame.setVisible(true);
 
             sairBtn.addActionListener(e -> {
@@ -245,12 +242,6 @@ public class Main {
                 cadastrarColaboradorProducaoFrame.setSize(640, 455);
                 cadastrarColaboradorProducaoFrame.setLocationRelativeTo(null);
                 cadastrarColaboradorProducaoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-                JPanel cadastrarColaboradorProducaoPanel = new JPanel();
-                cadastrarColaboradorProducaoPanel.setLayout(new GridLayout(10, 1, 5, 5));
-                cadastrarColaboradorProducaoPanel.setBorder(
-                    BorderFactory.createEmptyBorder(20, 20, 20, 20)
-                );
 
                 JLabel cadastrarColaboradorProducaoLabel =
                     new JLabel("Cadastrar colaborador comissionado");
